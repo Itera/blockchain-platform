@@ -1,0 +1,17 @@
+version: "3"
+services:
+    server1:
+        build: .
+        ports:
+            - "8080:80"
+        depends_on:
+            - mongo1
+        environment:
+            "ConnectionStrings:AzureServiceBus" : "<Service Bus Conenction String>"
+            "BlockchainNodeSettings:NodeName" : "<Name of your Node>"
+            "MongoDB:connectionString" : "mongodb://mongo1:27017/"
+    mongo1:
+        image: mongo:latest
+        ports:
+        - 27017:27017
+    
