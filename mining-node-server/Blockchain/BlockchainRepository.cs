@@ -33,10 +33,7 @@ namespace mining_node_server.Blockchain
 
         public Block GetLastBlock()
         {
-            var sort = Builders<Block>.Sort.Descending("index");
-            var filter = Builders<Block>.Filter.Empty;
-
-            return blocks.Find(filter).Sort(sort).FirstOrDefault();
+            return Get().LastOrDefault();
         }
     }
 }
